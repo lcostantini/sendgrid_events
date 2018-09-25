@@ -5,21 +5,20 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
+      <th>Email</th>
+      <th>Event</th>
+      <th>Category</th>
     </tr>
   </thead>
 
   <tbody>
     <% @sendgrid_events.each do |sendgrid_event| %>
       <tr>
-        <td><%= link_to 'Show', sendgrid_event %></td>
-        <td><%= link_to 'Edit', edit_sendgrid_event_path(sendgrid_event) %></td>
-        <td><%= link_to 'Destroy', sendgrid_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sendgrid_event.email %></td>
+        <td><%= sendgrid_event.event %></td>
+        <td><%= sendgrid_event.category %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Sendgrid Event', new_sendgrid_event_path %>

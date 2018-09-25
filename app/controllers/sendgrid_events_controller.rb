@@ -7,6 +7,10 @@ class SendgridEventsController < ApplicationController
     end
   end
 
+  def index
+    @sendgrid_events = SendgridEvent.all.limit(20)
+  end
+
   private
 
   def sendgrid_event_params
