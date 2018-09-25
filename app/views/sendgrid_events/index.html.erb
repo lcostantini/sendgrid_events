@@ -3,9 +3,11 @@
 <h1>Sendgrid Events</h1>
 
 <%= form_tag(sendgrid_events_path, method: :get) do %>
-  Email <%= text_field_tag :email, params[:email] %>
-  Type <%= text_field_tag :event, params[:event] %>
-  <%= submit_tag 'Search' %>
+  <%= text_field_tag 'search[email]', params.dig(:search, :email), placeholder: 'Email' %>
+  <%= text_field_tag 'search[event]', params.dig(:search, :event), placeholder: 'Event Type' %>
+  <%= text_field_tag 'search[user_id]', params.dig(:search, :user_id), placeholder: 'User ID' %>
+
+  <%= submit_tag 'Search', name: nil %>
 <% end %>
 
 <table>

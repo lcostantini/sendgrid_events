@@ -1,4 +1,5 @@
 class SendgridEventsController < ApplicationController
+  # This is here so I can use the script to send the webhook events
   skip_before_action :verify_authenticity_token
 
   def create
@@ -8,8 +9,8 @@ class SendgridEventsController < ApplicationController
   end
 
   def index
-    if params[:email] || params[:event]
-      @sendgrid_events = SendgridEvent.filter_by(params[:email], params[:event])
+    if sendgrid_event_params[:search].present?
+      @sendgrid_events = SendgridEvent.filter_by(sendgrid_event_params[:search])
     else
       @sendgrid_events = SendgridEvent.all.limit(20)
     end
@@ -18,6 +19,9 @@ class SendgridEventsController < ApplicationController
   private
 
   def sendgrid_event_params
-    params.permit(_json: [:email, :timestamp, :event, :category, :sg_event_id, :sg_message_id, :attempt])
+    params.permit(search: [:email, :event, :user_id],
+                  _json: [:email, :timestamp, :event, :category,
+                          :sg_event_id, :sg_message_id, :attempt]
+    )
   end
 end
