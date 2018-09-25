@@ -1,0 +1,5 @@
+{
+  "name": "sendgrid_webhook",
+  "private": true,
+  "dependencies": {}
+}
