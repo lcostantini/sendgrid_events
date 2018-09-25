@@ -8,7 +8,11 @@ class SendgridEventsController < ApplicationController
   end
 
   def index
-    @sendgrid_events = SendgridEvent.all.limit(20)
+    if params[:email] || params[:event]
+      @sendgrid_events = SendgridEvent.filter_by(params[:email], params[:event])
+    else
+      @sendgrid_events = SendgridEvent.all.limit(20)
+    end
   end
 
   private

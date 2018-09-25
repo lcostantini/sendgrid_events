@@ -2,6 +2,12 @@
 
 <h1>Sendgrid Events</h1>
 
+<%= form_tag(sendgrid_events_path, method: :get) do %>
+  Email <%= text_field_tag :email, params[:email] %>
+  Type <%= text_field_tag :event, params[:event] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
