@@ -1,22 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sendgrid Events</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <label class="navbar-brand">Filter e-mails</label>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= form_tag(sendgrid_events_path, method: :get, class: 'form-row') do %>
+      <div class='col'>
+        <%= text_field_tag 'search[email]', params.dig(:search, :email), placeholder: 'Email', class: 'form-control' %>
+      </div>
+      <div class='col'>
+        <%= text_field_tag 'search[event]', params.dig(:search, :event), placeholder: 'Event Type', class: 'form-control' %>
+      </div>
+      <div class='col'>
+        <%= text_field_tag 'search[user_id]', params.dig(:search, :user_id), placeholder: 'User ID', class: 'form-control' %>
+      </div>
 
-<%= form_tag(sendgrid_events_path, method: :get) do %>
-  <%= text_field_tag 'search[email]', params.dig(:search, :email), placeholder: 'Email' %>
-  <%= text_field_tag 'search[event]', params.dig(:search, :event), placeholder: 'Event Type' %>
-  <%= text_field_tag 'search[user_id]', params.dig(:search, :user_id), placeholder: 'User ID' %>
+      <div class='col'>
+        <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-success' %>
 
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+        <%= link_to 'Clear', root_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</nav>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="4"></th>
-      <th>Email</th>
-      <th>Event</th>
-      <th>Category</th>
+      <th scope="col">Email</th>
+      <th scope="col">Event</th>
     </tr>
   </thead>
 
@@ -25,7 +36,6 @@
       <tr>
         <td><%= sendgrid_event.email %></td>
         <td><%= sendgrid_event.event %></td>
-        <td><%= sendgrid_event.category %></td>
       </tr>
     <% end %>
   </tbody>
