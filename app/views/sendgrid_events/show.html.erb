@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_sendgrid_event_path(@sendgrid_event) %> |
+<dl class="row">
+  <dt class="col-sm-3">Email</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.email %></dd>
+
+  <dt class="col-sm-3">Email sent</dt>
+  <dd class="col-sm-9"><%= DateTime.strptime(@sendgrid_event.timestamp, '%s').strftime('%d-%m-%Y') %></dd>
+
+  <dt class="col-sm-3">Event</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.event %></dd>
+
+  <dt class="col-sm-3">Category</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.category %></dd>
+
+  <dt class="col-sm-3">User ID</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.user_id %></dd>
+
+  <dt class="col-sm-3">Event ID</dt>
+  <dd class="col-sm-9"><%= link_to @sendgrid_event.sg_event_id, 'https://sendgrid.com' %></dd>
+
+  <dt class="col-sm-3">Message ID</dt>
+  <dd class="col-sm-9"><%= link_to @sendgrid_event.sg_message_id, 'https://sendgrid.com' %></dd>
+</dl>
+
 <%= link_to 'Back', sendgrid_events_path %>

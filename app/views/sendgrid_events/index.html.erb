@@ -28,14 +28,16 @@
     <tr>
       <th scope="col">Email</th>
       <th scope="col">Event</th>
+      <th scope="col">User ID</th>
     </tr>
   </thead>
 
   <tbody>
     <% @sendgrid_events.each do |sendgrid_event| %>
       <tr>
-        <td><%= sendgrid_event.email %></td>
+        <td><%= link_to sendgrid_event.email, sendgrid_event_path(sendgrid_event.id) %></td>
         <td><%= sendgrid_event.event %></td>
+        <td><%= sendgrid_event.user_id %></td>
       </tr>
     <% end %>
   </tbody>
