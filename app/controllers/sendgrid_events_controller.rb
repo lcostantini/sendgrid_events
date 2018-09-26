@@ -10,9 +10,9 @@ class SendgridEventsController < ApplicationController
 
   def index
     if sendgrid_event_params[:search].present?
-      @sendgrid_events = SendgridEvent.filter_by(sendgrid_event_params[:search])
+      @sendgrid_events = SendgridEvent.filter_by(sendgrid_event_params[:search]).page(params[:page]).per(20)
     else
-      @sendgrid_events = SendgridEvent.all.limit(20)
+      @sendgrid_events = SendgridEvent.page(params[:page]).per(20)
     end
   end
 
