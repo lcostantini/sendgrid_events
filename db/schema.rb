@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_191933) do
+ActiveRecord::Schema.define(version: 2018_09_26_132943) do
 
   create_table "sendgrid_events", force: :cascade do |t|
     t.string "email", null: false
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2018_09_25_191933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
+    t.integer "attempt"
+    t.text "response"
+    t.index ["category"], name: "index_sendgrid_events_on_category"
     t.index ["email"], name: "index_sendgrid_events_on_email"
     t.index ["event"], name: "index_sendgrid_events_on_event"
     t.index ["sg_event_id"], name: "index_sendgrid_events_on_sg_event_id", unique: true
