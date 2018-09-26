@@ -23,7 +23,7 @@ class SendgridEventsController < ApplicationController
   private
 
   def sendgrid_event_params
-    params.permit(search: [:email, :event, :user_id],
+    params.permit(search: [:email, :event, :user_id, :category],
                   _json: [:email, :timestamp, :event, :category,
                           :sg_event_id, :sg_message_id, :attempt]
     )

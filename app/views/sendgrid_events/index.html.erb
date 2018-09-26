@@ -8,7 +8,10 @@
         <%= text_field_tag 'search[email]', params.dig(:search, :email), placeholder: 'Email', class: 'form-control' %>
       </div>
       <div class='col'>
-        <%= select_tag 'search[event]', options_for_select(SendgridEvent.events, params.dig(:search, :event)), include_blank: true, class: 'form-control' %>
+        <%= text_field_tag 'search[category]', params.dig(:search, :category), placeholder: 'Category', class: 'form-control' %>
+      </div>
+      <div class='col'>
+        <%= select_tag 'search[event]', options_for_select(SendgridEvent.events, params.dig(:search, :event)), prompt: 'Event type', class: 'form-control' %>
       </div>
       <div class='col'>
         <%= text_field_tag 'search[user_id]', params.dig(:search, :user_id), placeholder: 'User ID', class: 'form-control' %>
@@ -31,6 +34,7 @@
     <tr>
       <th scope="col">Email</th>
       <th scope="col">Event</th>
+      <th scope="col">Category</th>
       <th scope="col">User ID</th>
     </tr>
   </thead>
@@ -39,7 +43,8 @@
     <% @sendgrid_events.each do |sendgrid_event| %>
       <tr>
         <td><%= link_to sendgrid_event.email, sendgrid_event_path(sendgrid_event.id) %></td>
-        <td><%= sendgrid_event.event %></td>
+        <td class="<%= sendgrid_event.event %>"><%= sendgrid_event.event %></td>
+        <td><%= sendgrid_event.category %></td>
         <td><%= sendgrid_event.user_id %></td>
       </tr>
     <% end %>
