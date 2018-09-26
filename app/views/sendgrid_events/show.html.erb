@@ -10,6 +10,12 @@
   <dt class="col-sm-3">Event</dt>
   <dd class="col-sm-9"><%= @sendgrid_event.event %></dd>
 
+  <dt class="col-sm-3">Response</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.response %></dd>
+
+  <dt class="col-sm-3">Attempts</dt>
+  <dd class="col-sm-9"><%= @sendgrid_event.attempt || 0 %></dd>
+
   <dt class="col-sm-3">Category</dt>
   <dd class="col-sm-9"><%= @sendgrid_event.category %></dd>
 
