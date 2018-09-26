@@ -11,4 +11,8 @@ class SendgridEvent < ApplicationRecord
 
     find_by_email(search_params[:email]).find_by_event(search_params[:event])
   end
+
+  def self.events
+    all.map(&:event).uniq
+  end
 end
