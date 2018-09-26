@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sendgrid-ruby'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry'
