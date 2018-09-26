@@ -16,10 +16,13 @@
 
       <div class='col'>
         <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-success' %>
-
         <%= link_to 'Clear', root_path, class: 'btn btn-outline-secondary' %>
       </div>
     <% end %>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= link_to 'Spam Emails', sendgrid_events_path(search: { event: 'spamreport' }), class: 'btn btn-outline-primary' %>
+    <%= link_to 'Bounce Emails', sendgrid_events_path(search: { event: 'bounce' }), class: 'btn btn-outline-primary' %>
   </div>
 </nav>
 
